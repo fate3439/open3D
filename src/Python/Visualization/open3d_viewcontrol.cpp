@@ -59,7 +59,16 @@ void pybind_viewcontrol(py::module &m)
         .def("get_field_of_view", &ViewControl::GetFieldOfView,
                 "Function to get field of view")
         .def("change_field_of_view", &ViewControl::ChangeFieldOfView,
-                "Function to change field of view", "step"_a = 0.45);
+                "Function to change field of view", "step"_a = 0.45)
+        .def("change_window_size", &ViewControl::ChangeWindowSize,
+                "Function to change field of view", "width"_a , "height"_a)
+        .def("set_projection_params", &ViewControl::SetProjectionParameters,
+                "Function to update projection parameters")
+        .def("set_view_matrices", &ViewControl::SetViewMatrices,
+                "Function to update M,V,P matrices")
+        .def("get_MVP_matrix", &ViewControl::GetMVPMatrix,
+                "Function to get ModelViewProjection matrix");
+
 }
 
 void pybind_viewcontrol_method(py::module &m)
